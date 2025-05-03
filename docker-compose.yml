@@ -1,0 +1,18 @@
+version: "3"
+services:
+  back:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - "db.env"
+      - "app.env"
+    depends_on:
+      - db
+    ports:
+      - ${PORT}:${PORT}
+  db:
+    image: postgres
+    env_file: "db.env"
+
+
